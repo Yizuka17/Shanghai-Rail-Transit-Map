@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#f7f7f4" />
+    <meta
+      name="description"
+      content="按真实地理位置绘制的上海轨道交通交互地图。"
+    />
+    <title>上海轨道交通地图</title>
+    <link rel="preconnect" href="https://tile.openstreetmap.org" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <div id="map" aria-label="上海轨道交通地图"></div>
+
+      <header class="topbar glass-panel">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">轨</div>
+          <div>
+            <h1>上海轨道交通地图</h1>
+            <p>Geographic Rail Transit Map</p>
+          </div>
+        </div>
+        <div class="topbar-actions">
+          <button id="station-toggle" class="soft-button" type="button" aria-pressed="false">
+            车站标注
+          </button>
+          <button id="home-button" class="icon-button" type="button" title="回到上海全图" aria-label="回到上海全图">
+            ◎
+          </button>
+        </div>
+      </header>
+
+      <aside class="line-panel glass-panel" aria-label="线路控制">
+        <div class="panel-head">
+          <div>
+            <span class="eyebrow">LINES</span>
+            <strong>线路</strong>
+          </div>
+          <button id="toggle-all" class="text-button" type="button">全部隐藏</button>
+        </div>
+
+        <div class="filter-row" role="group" aria-label="线路类型筛选">
+          <button class="filter-chip is-active" data-filter="all" type="button">全部</button>
+          <button class="filter-chip" data-filter="metro" type="button">地铁</button>
+          <button class="filter-chip" data-filter="other" type="button">其他轨交</button>
+        </div>
+
+        <div id="line-list" class="line-list"></div>
+
+        <div class="panel-foot">
+          <span class="status-dot"></span>
+          <span id="network-status">正在载入轨道几何…</span>
+        </div>
+      </aside>
+
+      <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="./lines.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
